@@ -28,6 +28,7 @@ rarities = ['Common', 'Uncommon','Rare','Legendary','Exotic']
 graphs = ['Box Plot', 'Scatter Plot', 'Bar Chart']
 num_features = ['Impact', 'Range', 'RPM', 'Magazine']
 cat_features = ['Element', 'Type', 'Rarity']
+color_features = ['None', 'Element', 'Type', 'Rarity']
 
 old_graph = ""
 old_x = ""
@@ -79,11 +80,11 @@ if user_graph != old_graph:
 
   elif user_graph == 'Bar Chart':
     user_x_var = st.selectbox("Select Categorical Variable for the X Axis", cat_features)
-    user_color_var = st.selectbox("OPTIONAL: Select Categorical Variable for coloring", cat_features)
+    user_color_var = st.selectbox("OPTIONAL: Select Categorical Variable for coloring", color_features)
 
     if old_x != user_x_var or old_color != user_color_var:
       old_x = user_x_var
-      if user_color_var != "":
+      if user_color_var != "None":
         old_color = user_color_var
 
         guns_counts = guns.groupby(['Element', 'Type', 'Rarity']).size().to_frame(name='Count').reset_index()
@@ -99,6 +100,8 @@ if user_graph != old_graph:
         st.plotly_chart(fig)
       
       else:
+        old_color = user_color_var
+        
         guns_counts = guns.groupby(['Element', 'Type', 'Rarity']).size().to_frame(name='Count').reset_index()
 
         plt.style.use('dark_background')
