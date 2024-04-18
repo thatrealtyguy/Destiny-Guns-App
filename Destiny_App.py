@@ -32,6 +32,7 @@ cat_features = ['Element', 'Type', 'Rarity']
 old_graph = ""
 old_x = ""
 old_y = ""
+old_color = ""
 
 user_graph = st.selectbox("Select Graph Type", graphs)
 
@@ -78,21 +79,37 @@ if user_graph != old_graph:
 
   elif user_graph == 'Bar Chart':
     user_x_var = st.selectbox("Select Categorical Variable for the X Axis", cat_features)
+    user_color_var = st.selectbox("OPTIONAL: Select Categorical Variable for coloring", cat_features)
 
-    if old_x != user_x_var:
+    if old_x != user_x_var or old_color != user_color_var:
       old_x = user_x_var
+      if user_color_var != "":
+        old_color = user_color_var
 
-      guns_count = guns.groupby(user_x_var).size().to_frame(name='count')
+        guns_counts = guns.groupby(['Element', 'Type', 'Rarity']).size().to_frame(name='Count').reset_index()
 
-      plt.style.use('dark_background')
-      # Create the box plot (with additional considerations for Streamlit)
-      fig = px.bar(guns_count, x=user_x_var, y='count')
+        plt.style.use('dark_background')
+        # Create the box plot (with additional considerations for Streamlit)
+        fig = px.bar(guns_counts, x=user_x_var, y='Count', color = user_color_var)
 
-      # Customize the plot
-      fig.update_layout(title = 'Bar Chart for ' + user_x_var)
+        # Customize the plot
+        fig.update_layout(title = 'Bar Chart for ' + user_x_var + ' and colored by ' + user_color_var)
 
-      # Display the plot in Streamlit
-      st.plotly_chart(fig)
+        # Display the plot in Streamlit
+        st.plotly_chart(fig)
+      
+      else:
+        guns_counts = guns.groupby(['Element', 'Type', 'Rarity']).size().to_frame(name='Count').reset_index()
+
+        plt.style.use('dark_background')
+        # Create the box plot (with additional considerations for Streamlit)
+        fig = px.bar(guns_counts, x=user_x_var, y='Count')
+
+        # Customize the plot
+        fig.update_layout(title = 'Bar Chart for ' + user_x_var)
+
+        # Display the plot in Streamlit
+        st.plotly_chart(fig)
 
 # Display message if no graph was chosen
 if not user_graph:
