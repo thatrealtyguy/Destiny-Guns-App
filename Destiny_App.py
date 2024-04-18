@@ -18,46 +18,63 @@ types = ['Sword', 'Sidearm', 'Glaive', 'Shotgun', 'Hand Cannon',
         'Grenade Launcher', 'Machine Gun', 'Rocket Launcher',
         'Linear Fusion Rifle']
 rarities = ['Common', 'Uncommon','Rare','Legendary','Exotic']
+graphs = ['Box Plot', 'Scatter Plot', 'Bar Chart']
+num_features = ['Impact', 'Range', 'RPM', 'Magazine']
+cat_features = ['Element', 'Type', 'Rarity']
+bar_features = ['Universal', 'Element', 'Type', 'Rarity']
 
-old_element = ""
-old_type = ""
-old_rarity = ""
+old_graph = ""
+old_x = ""
+old_y = ""
 
-user_name = st.text_input("Enter name here")
-user_gender = st.selectbox("Select gender", genders)
-min_year = st.slider("Starting year", 1910, 2021, 1910)
-max_year = st.slider("Ending year", 1910, 2021, 2021)
+user_graph = st.selectbox("Select Graph Type", graphs)
 
-# Filter data based on user input (assuming 'name' is a column in 'data')
-if user_name != old_name or user_gender != old_gender:  # Check if the name has changed
-  old_name = user_name  # Update old_name for future comparisons
-  old_gender = user_gender  # Update old_gender for future comparisons
-  filtered_data = names[names['name'] == user_name]
-  filtered_data = filtered_data[filtered_data['sex'] == user_gender]
+if user_graph != old_graph:
+  old_graph = user_graph # Update old_graph for future comparisons
 
-  # Check if data was found
-  if not filtered_data.empty:
-    plt.style.use('dark_background')
-    # Create the line plot (with additional considerations for Streamlit)
-    fig, ax = plt.subplots()  # Create a figure and axis for better control
-    plt.plot(filtered_data['year'], filtered_data['n'], color = 'tomato')
+  if user_graph == 'Box Plot':
+    user_x_var = st.selectbox("Select Numerical Variable for the X Axis", num_features)
+    user_y_var = st.selectbox("Select Categorical Variable for the Y Axis", cat_features)
 
-    # Customize the plot (optional)
-    plt.xlim(min_year, max_year)
-    ax.set_title('Popularity Over Time for ' + user_name)
-    ax.set_xlabel('Year')
-    ax.set_ylabel('Count')
-    ax.grid()
+    if user_x_var != old_x or user_y_var != old_y:
+      old_x = user_x_var
+      old_y = user_y_var
 
-    # Display the plot in Streamlit
-    st.pyplot(fig)
-  else:
-    # Display a message if no data found for the entered name
-    st.warning("No data found for the entered name.")
-else:
-  # Name hasn't changed, so don't refilter or display plot again
-  pass  # Do nothing (avoids unnecessary computations and plot updates)
+      plt.style.use('dark_background')
+      # Create the box plot (with additional considerations for Streamlit)
+      fig = px.box(guns, x=user_x_var, y=user_y_var, color = 'tomato')
 
-# Display message if no name was entered
-if not user_name:
-  st.warning("Please enter a name.")
+      # Customize the plot
+      fig.update_layout(title = 'Boxplot for ' + user_x_var + ' by ' + user_y_var)
+
+      # Display the plot in Streamlit
+      st.plotly_chart(fig)
+
+  elif user_graph == 'Scatter Plot':
+    user_x_var = st.selectbox("Select Numerical Variable for the X Axis", num_features)
+    user_y_var = st.selectbox("Select Numerical Variable for the Y Axis", num_features)
+
+    if user_x_var == user_y_var:
+      st.warning("You chose 2 of the same variable. Scatter Plot unavailable.")
+    elif user_x_var != old_x or user_y_var != old_y:
+      old_x = user_x_var
+      old_y = user_y_var
+
+      st.title('Scatterplot for ' + user_x_var + ' by ' + user_y_var)
+      st.scatter_chart(guns, x=user_x_var, y=user_y_var, color = 'tomato')
+
+  elif user_graph == 'Bar Chart':
+    user_x_var = st.selectbox("Select Categorical Variable for the X Axis", bar_features)
+
+    if old_x != user_x_var:
+      if user_x_var == 'Universal':
+        st.title('Bar Chart for every column')
+        st.bar_chart(guns)
+      
+      else:
+        st.title('Bar Chart for ' + user_x_var)
+        st.bar_chart(guns[user_x_var])
+
+# Display message if no graph was chosen
+if not user_graph:
+  st.warning("Please choose a graph.")
