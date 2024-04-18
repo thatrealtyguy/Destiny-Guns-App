@@ -10,6 +10,13 @@ import matplotlib.pyplot as plt
 # Welcome to my Destiny 2 guns app!
 
 """
+st.markdown("""
+This app is based on data from [Destiny Tracker](https://destinytracker.com/destiny-2/db/items/weapon).
+""")
+st.markdown("""
+Data is from before "Into the Light" expansion.
+""")
+
 guns = pd.read_csv('Destiny_Guns.csv')
 elements = ['Kinetic', 'Solar', 'Void', 'Arc', 'Stasis', 'Strand']
 types = ['Sword', 'Sidearm', 'Glaive', 'Shotgun', 'Hand Cannon',
