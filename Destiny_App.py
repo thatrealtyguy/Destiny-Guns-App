@@ -28,7 +28,6 @@ rarities = ['Common', 'Uncommon','Rare','Legendary','Exotic']
 graphs = ['Box Plot', 'Scatter Plot', 'Bar Chart']
 num_features = ['Impact', 'Range', 'RPM', 'Magazine']
 cat_features = ['Element', 'Type', 'Rarity']
-bar_features = ['Universal', 'Element', 'Type', 'Rarity']
 
 old_graph = ""
 old_x = ""
@@ -67,20 +66,33 @@ if user_graph != old_graph:
       old_x = user_x_var
       old_y = user_y_var
 
-      st.title('Scatterplot for ' + user_x_var + ' by ' + user_y_var)
-      st.scatter_chart(guns, x=user_x_var, y=user_y_var)
+      plt.style.use('dark_background')
+      # Create the box plot (with additional considerations for Streamlit)
+      fig = px.scatter(guns, x=user_x_var, y=user_y_var)
+
+      # Customize the plot
+      fig.update_layout(title = 'Scatterplot for ' + user_x_var + ' by ' + user_y_var)
+
+      # Display the plot in Streamlit
+      st.plotly_chart(fig)
 
   elif user_graph == 'Bar Chart':
-    user_x_var = st.selectbox("Select Categorical Variable for the X Axis", bar_features)
+    user_x_var = st.selectbox("Select Categorical Variable for the X Axis", cat_features)
 
     if old_x != user_x_var:
-      if user_x_var == 'Universal':
-        st.title('Bar Chart for every column')
-        st.bar_chart(guns)
-      
-      else:
-        st.title('Bar Chart for ' + user_x_var)
-        st.bar_chart(guns[user_x_var])
+      old_x = user_x_var
+
+      guns_count = guns.groupby(user_x_var).size().to_frame(name='count')
+
+      plt.style.use('dark_background')
+      # Create the box plot (with additional considerations for Streamlit)
+      fig = px.bar(guns_count, x=user_x_var, y='count')
+
+      # Customize the plot
+      fig.update_layout(title = 'Bar Chart for ' + user_x_var)
+
+      # Display the plot in Streamlit
+      st.plotly_chart(fig)
 
 # Display message if no graph was chosen
 if not user_graph:
