@@ -33,8 +33,8 @@ if user_graph != old_graph:
   old_graph = user_graph # Update old_graph for future comparisons
 
   if user_graph == 'Box Plot':
-    user_x_var = st.selectbox("Select Numerical Variable for the X Axis", num_features)
-    user_y_var = st.selectbox("Select Categorical Variable for the Y Axis", cat_features)
+    user_x_var = st.selectbox("Select Categorical Variable for the X Axis", cat_features)
+    user_y_var = st.selectbox("Select Numerical Variable for the Y Axis", num_features)
 
     if user_x_var != old_x or user_y_var != old_y:
       old_x = user_x_var
