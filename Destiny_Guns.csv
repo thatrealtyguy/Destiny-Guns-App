@@ -16,7 +16,7 @@
 14,Conditional Finality,80,35,55,2,Stasis,Shotgun,Exotic
 15,Crimson,92,55,415,8,Kinetic,Hand Cannon,Exotic
 16,Cryosthesia 77 K,51,72,260,12,Stasis,Sidearm,Exotic
-17,D.A.R.C.I,55,30,140,5,Arc,Sniper Rifle,.Exotic
+17,D.A.R.C.I.,55,30,140,5,Arc,Sniper Rifle,Exotic
 18,Dead Man's Tale,100,60,120,14,Kinetic,Scout Rifle,Exotic
 20,Dead Messenger,—,—,72,1,Void,Grenade Launcher,Exotic
 22,Deathbringer,—,—,15,1,Void,Rocket Launcher,Exotic
@@ -26,9 +26,9 @@
 26,Divinity,6,67,1000,94,Arc,Trace Rifle,Exotic
 27,Dragon's Breath,—,—,15,1,Solar,Rocket Launcher,Exotic
 28,Duality,80,70,65,6,Solar,Shotgun,Exotic
-30,Edge of Action Exotic,80,40,55,4,Void,Glaive,Titan
-31,Edge of Concurrence Exotic,55,55,80,6,Arc,Glaive,Hunter
-32,Edge of Intent Exotic,95,70,45,4,Solar,Glaive,Warlock
+30,Edge of Action (Titan),80,40,55,4,Void,Glaive,Exotic
+31,Edge of Concurrence (Hunter),55,55,80,6,Arc,Glaive,Exotic
+32,Edge of Intent (Warlock),95,70,45,4,Solar,Glaive,Exotic
 33,Eriana's Vow,100,100,90,6,Solar,Hand Cannon,Exotic
 36,Ex Diris,—,—,90,1,Arc,Grenade Launcher,Exotic
 37,Eyes of Tomorrow,—,—,20,1,Solar,Rocket Launcher,Exotic
@@ -128,7 +128,7 @@
 154,Abyss Defiant,33,83,360,32,Solar,Auto Rifle,Legendary
 158,Acantha-D,—,—,150,5,Solar,Grenade Launcher,Legendary
 159,Acantha-D X K8434,—,—,150,5,Arc,Grenade Launcher,Legendary
-164,Acasia's Dejection,6,69,1000,98,Solar,Trace Rifle,(Adept)Legendary
+164,Acasia's Dejection,6,69,1000,98,Solar,Trace Rifle,Legendary
 165,Accrued Redemption,76,—,—,—,Kinetic,Combat Bow,Legendary
 167,Acosmic,—,—,150,5,Void,Grenade Launcher,Legendary
 168,Adhortative,29,41,390,37,Solar,Pulse Rifle,Legendary
@@ -261,13 +261,13 @@
 363,Critical Sass,55,22,—,7,Arc,Fusion Rifle,Legendary
 364,Crooked Fang-4fr,41,27,—,6,Void,Linear Fusion Rifle,Legendary
 366,Crowd Pleaser,—,—,120,5,Void,Grenade Launcher,Legendary
-367,Crown-Splitter Legendary,72,60,—,40,Void,Sword,Titan
+367,Crown-Splitter (Titan),72,60,—,40,Void,Sword,Legendary
 369,Crowning Duologue,—,—,15,1,Strand,Rocket Launcher,Legendary
 370,Crux Termination I V,—,—,25,1,Arc,Rocket Launcher,Legendary
 371,Cry Mutiny,—,—,120,4,Solar,Grenade Launcher,Legendary
 372,Curtain Call,—,—,25,1,Solar,Rocket Launcher,Legendary
-373,,84,45,140,9,Kinetic,Hand Cannon,D.F.A.Legendary
-375,D.F.A.,84,45,140,9,Kinetic,Hand Cannon,(Adept)Legendary
+373,D.F.A.,84,45,140,9,Kinetic,Hand Cannon,Legendary
+375,D.F.A. (Adept),84,45,140,9,Kinetic,Hand Cannon,Legendary
 376,Daedalus Code,84,32,140,13,Solar,Hand Cannon,Legendary
 377,Dark Decider,18,25,720,50,Arc,Auto Rifle,Legendary
 380,Darkest Before,23,34,540,36,Arc,Pulse Rifle,Legendary
@@ -279,7 +279,7 @@
 389,Deafening Whisper,—,—,72,1,Void,Grenade Launcher,Legendary
 390,Death Adder,15,29,900,37,Solar,Submachine Gun,Legendary
 392,Death by Scorn,56,49,325,25,Void,Sidearm,Legendary
-393,Death's Razor Legendary,60,50,—,60,Solar,Sword,Warlock
+393,Death's Razor (Warlock),60,50,—,60,Solar,Sword,Legendary
 396,Defiance of Yasmin,70,54,90,4,Kinetic,Sniper Rifle,Legendary
 402,Deliverance,80,62,—,6,Stasis,Fusion Rifle,Legendary
 405,Different Times,23,28,540,34,Strand,Pulse Rifle,Legendary
@@ -320,7 +320,7 @@
 459,Etana S I4,75,39,491,30,Arc,Sidearm,Legendary
 460,Eternal Blazon,60,33,200,16,Arc,Scout Rifle,Legendary
 462,Eternal Slumber,29,42,390,37,Kinetic,Pulse Rifle,Legendary
-463,Eternity's Edge Legendary,60,50,—,60,Solar,Sword,Warlock
+463,Eternity's Edge (Warlock),60,50,—,60,Solar,Sword,Legendary
 465,Ether Doctor,21,38,600,41,Kinetic,Auto Rifle,Legendary
 466,Eulogy S I4,75,27,491,27,Void,Sidearm,Legendary
 467,Every Waking Moment,25,49,600,26,Void,Submachine Gun,Legendary
@@ -380,7 +380,7 @@
 550,Glissando-47,62,41,180,16,Strand,Scout Rifle,Legendary
 551,Gnawing Hunger,21,48,600,43,Void,Auto Rifle,Legendary
 552,Go Figure,35,69,450,40,Kinetic,Pulse Rifle,Legendary
-553,Goldtusk Legendary,60,20,—,70,Arc,Sword,Hunter
+553,Goldtusk (Hunter),60,20,—,70,Arc,Sword,Legendary
 555,Good Bone Structure,70,55,65,6,Arc,Shotgun,Legendary
 557,Good Counsel I X,67,65,150,13,Kinetic,Scout Rifle,Legendary
 558,Gravity Slingshot,80,15,55,5,Arc,Shotgun,Legendary
@@ -617,7 +617,7 @@
 917,Pyroclastic Flow,—,—,15,1,Solar,Rocket Launcher,Legendary
 918,Python,80,25,55,4,Void,Shotgun,Legendary
 919,Qua Xaphan V,70,65,360,44,Void,Machine Gun,Legendary
-920,Quickfang Legendary,60,20,—,70,Void,Sword,Hunter
+920,Quickfang (Hunter),60,20,—,70,Void,Sword,Legendary
 922,Quitclaim Shotgun I I I,80,21,55,5,Void,Shotgun,Legendary
 925,Qullim's Terminus,70,68,360,44,Stasis,Machine Gun,Legendary
 928,Raconteur,76,—,—,—,Stasis,Combat Bow,Legendary
@@ -810,7 +810,7 @@
 1229,Threaded Needle,41,37,—,5,Void,Linear Fusion Rifle,Legendary
 1230,Threat Level,65,30,140,7,Kinetic,Shotgun,Legendary
 1231,Three Graves,33,64,340,31,Kinetic,Pulse Rifle,Legendary
-1232,Throne-Cleaver Legendary,72,60,—,40,Void,Sword,Titan
+1232,Throne-Cleaver (Titan),72,60,—,40,Void,Sword,Legendary
 1234,Through Fire and Flood,—,—,120,6,Arc,Grenade Launcher,Legendary
 1235,Tiebreaker,—,—,25,1,Solar,Rocket Launcher,Legendary
 1236,Tigerspite,29,62,450,33,Kinetic,Auto Rifle,Legendary
