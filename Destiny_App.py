@@ -42,7 +42,7 @@ if user_graph != old_graph:
 
       plt.style.use('dark_background')
       # Create the box plot (with additional considerations for Streamlit)
-      fig = px.box(guns, x=user_x_var, y=user_y_var, color = 'tomato')
+      fig = px.box(guns, x=user_x_var, y=user_y_var)
 
       # Customize the plot
       fig.update_layout(title = 'Boxplot for ' + user_x_var + ' by ' + user_y_var)
@@ -61,7 +61,7 @@ if user_graph != old_graph:
       old_y = user_y_var
 
       st.title('Scatterplot for ' + user_x_var + ' by ' + user_y_var)
-      st.scatter_chart(guns, x=user_x_var, y=user_y_var, color = 'tomato')
+      st.scatter_chart(guns, x=user_x_var, y=user_y_var)
 
   elif user_graph == 'Bar Chart':
     user_x_var = st.selectbox("Select Categorical Variable for the X Axis", bar_features)
