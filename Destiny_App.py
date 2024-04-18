@@ -7,7 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 """
-# Welcome to my popular names app!
+# Welcome to my Destiny 2 guns app!
 
 """
 guns = pd.read_csv('Destiny_Guns.csv')
@@ -78,3 +78,7 @@ if user_graph != old_graph:
 # Display message if no graph was chosen
 if not user_graph:
   st.warning("Please choose a graph.")
+
+st.markdown("""
+* This app is based on the code available on [GitHub](https://github.com/thatrealtyguy/Destiny-Guns-App).
+""")
