@@ -10,13 +10,18 @@ import matplotlib.pyplot as plt
 # Welcome to my popular names app!
 
 """
-names = pd.read_csv('popular_names.csv')
-names['sex'] = names['sex'].astype(str)
-names['year'] = names['year'].astype(int)
-genders = ['M', 'F']
+guns = pd.read_csv('Destiny_Guns.csv')
+elements = ['Kinetic', 'Solar', 'Void', 'Arc', 'Stasis', 'Strand']
+types = ['Sword', 'Sidearm', 'Glaive', 'Shotgun', 'Hand Cannon',
+        'Scout Rifle', 'Auto Rifle', 'Pulse Rifle', 'Submachine Gun',
+        'Combat Bow', 'Fusion Rifle', 'Sniper Rifle', 'Trace Rifle',
+        'Grenade Launcher', 'Machine Gun', 'Rocket Launcher',
+        'Linear Fusion Rifle']
+rarities = ['Common', 'Uncommon','Rare','Legendary','Exotic']
 
-old_name = ""
-old_gender = ""
+old_element = ""
+old_type = ""
+old_rarity = ""
 
 user_name = st.text_input("Enter name here")
 user_gender = st.selectbox("Select gender", genders)
